@@ -16,6 +16,7 @@ jobs:
       - name: build and push container
         uses: docker/build-push-action@v6
         with:
+          context: "{{defaultContext}}:devcontainer"
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/swenstone/devcontainer:latest
