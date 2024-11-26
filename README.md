@@ -1,3 +1,3 @@
-# swenstone/images
+# swenstone/devcontainer
 
-swenstone server and container images.
+devcontainer for use on swenstone mobile app development projects.
