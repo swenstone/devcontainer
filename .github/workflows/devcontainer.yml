@@ -8,8 +8,12 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  docker:
+  build-and-push-devcontainer:
     runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
     steps:
       - name: setup qemu
         uses: docker/setup-qemu-action@v3
