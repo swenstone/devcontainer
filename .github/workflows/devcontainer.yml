@@ -8,29 +8,18 @@ env:
   TEST_IMAGE_TAG: test-${{ github.sha }}
 
 jobs:
-  build-and-push-devcontainer:
+  devcontainer:
     runs-on: ubuntu-latest
 
     env:
       IMAGE_NAME: ${{ github.repository_owner }}/devcontainer
-      TEST_IMAGE: ghcr.io/${{ github.repository_owner }}/devcontainer:${{ env.TEST_IMAGE_TAG }}
+      IMAGE_URL: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainer
+      TEST_IMAGE_URL: ${{ env.REGISTRY }}/${{ github.repository_owner }}/devcontainer:${{ env.TEST_IMAGE_TAG }}
 
     permissions:
       packages: write
 
     steps:
-      - name: extract metadata
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: |
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha,format=long
-            type=raw,value=latest,enable={{is_default_branch}}
-
       - name: checkout repo
         uses: actions/checkout@v4
 
@@ -55,12 +44,23 @@ jobs:
         with:
           cache-from: type=gha
           push: true
-          platforms: linux/amd64
-          tags: ${{ env.TEST_IMAGE }}
+          tags: ${{ env.TEST_IMAGE_URL }}
 
       - name: test container with goss
         run: |
-          dgoss run --rm ${{ env.TEST_IMAGE }}
+          dgoss run --rm ${{ env.TEST_IMAGE_URL }}
+
+      - name: extract metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: |
+            ${{ jobs.devcontainer.env.IMAGE_URL }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha,format=long
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: build and push container
         uses: docker/build-push-action@v6
