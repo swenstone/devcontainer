@@ -52,6 +52,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
 
       - name: test container with goss
+        env:
+          GOSS_FILES_STRATEGY: cp
         run: |
           dgoss run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
