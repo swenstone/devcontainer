@@ -52,6 +52,7 @@ jobs:
         with:
           cache-from: type=gha
           labels: ${{ steps.meta.outputs.labels }}
+          load: true
           platforms: linux/amd64
           push: true
           tags: ${{ env.TEST_IMAGE }}
