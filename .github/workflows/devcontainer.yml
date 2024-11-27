@@ -27,6 +27,9 @@ jobs:
             type=sha,format=long
             type=raw,value=latest,enable={{is_default_branch}}
 
+      - name: checkout repo
+        uses: actions/checkout@v4
+
       - name: install goss
         uses: e1himself/goss-installation-action@v1
 
