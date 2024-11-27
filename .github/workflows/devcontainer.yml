@@ -47,14 +47,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: build and export container
+      - name: build and push test container
         uses: docker/build-push-action@v6
         with:
           cache-from: type=gha
-          cache-to: type=gha
           labels: ${{ steps.meta.outputs.labels }}
-          load: true
           platforms: linux/amd64
+          push: true
           tags: ${{ env.TEST_IMAGE }}
 
       - name: test container with goss
