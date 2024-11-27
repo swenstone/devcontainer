@@ -1,11 +1,9 @@
+command:
+  'uv python find 3.12':
+    exit-status: 0
+
 file:
-  /home/vscode/.local/bin/uv:
-    exists: true
-  /home/vscode/.local/bin/uvx:
-    exists: true
-  /usr/bin/python3.12:
-    exists: true
-  /home/vscode/.volta/bin/volta:
+  /home/vscode/.volta/bin/expo:
     exists: true
   /home/vscode/.volta/bin/node:
     exists: true
@@ -13,9 +11,13 @@ file:
     exists: true
   /home/vscode/.volta/bin/tsc:
     exists: true
-  /home/vscode/.volta/bin/expo:
-    exists: true
   /home/vscode/.volta/bin/turbo:
+    exists: true
+  /home/vscode/.local/bin/uv:
+    exists: true
+  /home/vscode/.local/bin/uvx:
+    exists: true
+  /home/vscode/.volta/bin/volta:
     exists: true
 
 group:
