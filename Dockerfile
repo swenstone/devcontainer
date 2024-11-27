@@ -24,3 +24,5 @@ RUN uv python install 3.12 \
     typescript@latest \
     expo@latest \
     turbo@latest
+
+CMD ["sleep", "infinity"]
