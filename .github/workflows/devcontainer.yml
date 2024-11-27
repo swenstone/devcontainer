@@ -44,6 +44,8 @@ jobs:
           tags: ${{ env.TEST_IMAGE_URL }}
 
       - name: test container with goss
+        env:
+          GOSS_FILES_PATH: ./devcontainer/
         run: |
           dgoss run --rm ${{ env.TEST_IMAGE_URL }}
 
