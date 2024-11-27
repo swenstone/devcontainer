@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
+      REGISTRY: ghcr.io
       IMAGE_URL: ghcr.io/${{ github.repository_owner }}/devcontainer
       TEST_IMAGE_URL: ghcr.io/${{ github.repository_owner }}/devcontainer:test-${{ github.sha }}
 
@@ -30,7 +31,7 @@ jobs:
       - name: docker login
         uses: docker/login-action@v3
         with:
-          registry: ${{ jobs.devcontainer.env.REGISTRY }}
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -39,18 +40,18 @@ jobs:
         with:
           cache-from: type=gha
           push: true
-          tags: ${{ jobs.devcontainer.env.TEST_IMAGE_URL }}
+          tags: ${{ env.TEST_IMAGE_URL }}
 
       - name: test container with goss
         run: |
-          dgoss run --rm ${{ jobs.devcontainer.env.TEST_IMAGE_URL }}
+          dgoss run --rm ${{ env.TEST_IMAGE_URL }}
 
       - name: extract metadata
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ jobs.devcontainer.env.IMAGE_URL }}
+            ${{ env.IMAGE_URL }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
