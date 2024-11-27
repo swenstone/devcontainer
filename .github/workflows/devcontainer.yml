@@ -6,7 +6,6 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  TEST_IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-test
 
 jobs:
   build-and-push-devcontainer:
@@ -45,6 +44,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: build and export container
+        env:
+          TEST_IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-test
         uses: docker/build-push-action@v6
         with:
           cache-from: type=gha
@@ -53,6 +54,8 @@ jobs:
           tags: ${{ env.TEST_IMAGE }}
 
       - name: test container with goss
+        env:
+          TEST_IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-test
         run: |
           GOSS_FILES_STRATEGY=cp dgoss run --rm ${{ env.TEST_IMAGE }}
 
