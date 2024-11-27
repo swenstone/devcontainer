@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           cache-from: type=gha
-          load: true
+          push: true
           platforms: linux/amd64
           tags: ${{ env.TEST_IMAGE }}
 
