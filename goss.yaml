@@ -3,7 +3,32 @@ file:
     exists: true
   /home/vscode/.local/bin/uvx:
     exists: true
+  /home/vscode/.local/bin/python3.12:
+    exists: true
+  /home/vscode/.volta/bin/volta:
+    exists: true
+  /home/vscode/.volta/bin/nodejs:
+    exists: true
+  /home/vscode/.volta/bin/pnpm:
+    exists: true
+  /home/vscode/.volta/bin/tsc:
+    exists: true
+  /home/vscode/.volta/bin/expo:
+    exists: true
+  /home/vscode/.volta/bin/turbo:
+    exists: true
+
+group:
+  vscode:
+    exists: true
+    gid: 1000
 
 package:
   pipx:
     installed: true
+
+user:
+  vscode:
+    exists: true
+    gid: 1000
+    uid: 1000
