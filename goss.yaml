@@ -3,11 +3,11 @@ file:
     exists: true
   /home/vscode/.local/bin/uvx:
     exists: true
-  /home/vscode/.local/bin/python3.12:
+  /usr/bin/python3.12:
     exists: true
   /home/vscode/.volta/bin/volta:
     exists: true
-  /home/vscode/.volta/bin/nodejs:
+  /home/vscode/.volta/bin/node:
     exists: true
   /home/vscode/.volta/bin/pnpm:
     exists: true
