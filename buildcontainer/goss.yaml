@@ -1,0 +1,36 @@
+command:
+  'uv python find 3.12':
+    exit-status: 0
+
+file:
+  /home/swenstone/.volta/bin/expo:
+    exists: true
+  /home/swenstone/.volta/bin/node:
+    exists: true
+  /home/swenstone/.volta/bin/pnpm:
+    exists: true
+  /home/swenstone/.volta/bin/tsc:
+    exists: true
+  /home/swenstone/.volta/bin/turbo:
+    exists: true
+  /home/swenstone/.local/bin/uv:
+    exists: true
+  /home/swenstone/.local/bin/uvx:
+    exists: true
+  /home/swenstone/.volta/bin/volta:
+    exists: true
+
+group:
+  swenstone:
+    exists: true
+    gid: 1000
+
+package:
+  pipx:
+    installed: true
+
+user:
+  swenstone:
+    exists: true
+    gid: 1000
+    uid: 1000

@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 ENV PYTHONUNBUFFERED=1
-ENV VOLTA_HOME="/home/vscode/.volta"
+ENV VOLTA_HOME="/home/vscode/.volta" VOLTA_FEATURE_PNPM=1
 ENV PATH="${VOLTA_HOME}/bin:/home/vscode/.local/bin:${PATH}"
 
 USER vscode
@@ -11,7 +11,7 @@ WORKDIR /home/vscode
 RUN sudo apt-get update \
   && export DEBIAN_FRONTEND=noninteractive \
   && sudo apt-get -y install --no-install-recommends \
-    pipx \
+  pipx \
   && sudo apt-get clean \
   && sudo rm -rf /var/lib/apt/lists/* \
   && pipx install uv \
@@ -19,10 +19,10 @@ RUN sudo apt-get update \
 
 RUN uv python install 3.12 \
   && volta install \
-    node@lts \
-    pnpm@latest \
-    typescript@latest \
-    expo@latest \
-    turbo@latest
+  node@lts \
+  pnpm@latest \
+  typescript@latest \
+  expo@latest \
+  turbo@latest
 
 CMD ["sleep", "infinity"]
