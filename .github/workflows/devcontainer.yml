@@ -57,7 +57,7 @@ jobs:
         env:
           TEST_IMAGE: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}-test
         run: |
-          GOSS_FILES_STRATEGY=cp dgoss run --rm ${{ env.TEST_IMAGE }}
+          GOSS_FILES_STRATEGY=cp DEBUG=true dgoss run --rm ${{ env.TEST_IMAGE }}
 
       - name: build and push container
         uses: docker/build-push-action@v6
