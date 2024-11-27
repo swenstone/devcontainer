@@ -53,7 +53,7 @@ jobs:
 
       - name: test container with goss
         run: |
-          dgoss run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ branch }}
+          dgoss run --rm ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.ref_name }}
 
       - name: build and push container
         uses: docker/build-push-action@v6
