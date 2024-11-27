@@ -1,0 +1,9 @@
+file:
+  /home/vscode/.local/bin/uv:
+    exists: true
+  /home/vscode/.local/bin/uvx:
+    exists: true
+
+package:
+  pipx:
+    installed: true
