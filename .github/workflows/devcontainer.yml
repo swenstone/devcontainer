@@ -39,6 +39,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           cache-from: type=gha
+          context: devcontainer/
           push: true
           tags: ${{ env.TEST_IMAGE_URL }}
 
@@ -63,6 +64,7 @@ jobs:
         with:
           cache-from: type=gha
           cache-to: type=gha
+          context: devcontainer/
           labels: ${{ steps.meta.outputs.labels }}
           platforms: linux/amd64,linux/arm64
           push: true
