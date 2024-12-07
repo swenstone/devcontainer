@@ -7,7 +7,7 @@ command:
   'env | grep VOLTA_HOME':
     exit-status: 0
     stdout:
-      - /^VOLTA_HOME="\/home\/vscode\/.volta"$/
+      - /^VOLTA_HOME=\/home\/vscode\/.volta$/
   'env | grep VOLTA_FEATURE_PNPM':
     exit-status: 0
     stdout:
