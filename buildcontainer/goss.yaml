@@ -1,5 +1,25 @@
 command:
-  'uv python find 3.12':
+  # test our env vars are set
+  "env | grep PYTHONUNBUFFERED":
+    exit-status: 0
+    stdout:
+      - /^PYTHONUNBUFFERED=1$/
+  "env | grep VOLTA_HOME":
+    exit-status: 0
+    stdout:
+      - /^VOLTA_HOME="\/home\/swenstone\/.volta"$/
+  "env | grep VOLTA_FEATURE_PNPM":
+    exit-status: 0
+    stdout:
+      - /^VOLTA_FEATURE_PNPM=1$/
+  "echo $PATH":
+    exit-status: 0
+    stdout:
+      - /\/home\/swenstone\/.local\/bin/
+      - /\/home\/swenstone\/.volta\/bin/
+
+  # test that the version of python we want is installed with uv
+  "uv python find 3.12":
     exit-status: 0
 
 file:
