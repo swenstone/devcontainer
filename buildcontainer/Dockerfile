@@ -14,17 +14,17 @@ WORKDIR /home/swenstone
 # Install os packages and development stack tooling
 RUN sudo dnf upgrade -y \
   && sudo dnf install -y \
-    pipx \
+  pipx \
   && sudo dnf clean -y all \
   && pipx install uv \
   && curl https://get.volta.sh | bash -s -- --skip-setup
 
 RUN uv python install 3.12 \
   && volta install \
-    node@lts \
-    pnpm@latest \
-    typescript@latest \
-    expo@latest \
-    turbo@latest
+  node@lts \
+  pnpm@latest \
+  typescript@latest \
+  expo@latest \
+  turbo@latest
 
 CMD ["sleep", "infinity"]
