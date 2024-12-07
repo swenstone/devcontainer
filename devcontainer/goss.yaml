@@ -1,4 +1,12 @@
 command:
+  # test our env vars are set
+  'env | grep PYTHONUNBUFFERED':
+    exit-status: 0
+    stdout: 
+      - /^PYTHONUNBUFFERED=1$/
+
+
+  # test that the version of python we want is installed with uv
   'uv python find 3.12':
     exit-status: 0
 
